@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesiah Desaine - Bio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-r from-[#000000] via-[#0a0a0a] to-[#000000] text-gray-300 font-[Josefin Sans]">
+
+    <!-- Floating Tab Menu -->
+    <div id="floating-tab"
+        class="fixed top-5 right-5 bg-white text-black rounded-full shadow-lg cursor-pointer px-4 py-2 flex items-center space-x-2 transition-all duration-300">
+        <img id="menu-icon" src="img/icons/menu-open.webp" alt="Menu"
+            class="w-6 h-6 transition-transform duration-300 origin-center">
+        <span class="text-lg mt-1">Menu</span>
+    </div>
+
+    <!-- Menu Content (Initially Hidden) -->
+    <div id="tab-menu"
+        class="fixed top-20 right-5 bg-white text-black w-60 p-5 rounded-lg shadow-lg hidden transition-all duration-300 z-50">
+        <div class="text-center">
+            <a href="index.html"><img src="img/jesiah-desaine.webp" alt="Jesiah Desaine"
+                class="w-20 h-20 rounded-full mx-auto border-2 border-white">
+            <h3 class="text-lg mt-2">Jesiah Desaine</h3></a>
+            <p class="text-sm text-gray-400">📞 <a href="https://wa.me/1234567890"
+                    class="text-green-400 hover:underline">WhatsApp</a></p>
+            <p class="text-sm text-gray-400">🕒 Available 4-10 PM</p>
+        </div>
+
+        <div class="mt-4 flex flex-col space-y-2">
+            <a href="bio.html" class="block text-center py-2 bg-transparent rounded-full">📖 Bio</a>
+            <a href="contact.html" class="block text-center py-2 bg-black text-white rounded-full hover:bg-black">📩
+                Contact</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="text-center py-10">
+        <a href="index.html"><img src="img/jes-des-media-logo.webp" alt="Jes Des Media Logo" class="mx-auto" id="logo"
+            style="filter: invert(1) hue-rotate(180deg);"></a>
+        <h2 class="text-5xl mt-5 font-semibold tracking-wide">About Jesiah Desaine</h2>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-10">
+
+        <!-- Who Am I Section -->
+        <section class="bg-[#111] p-6 rounded-lg shadow-lg mb-10 transition-all hover:shadow-red-500/50">
+            <h3 class="text-3xl mb-4 text-red-500 font-semibold">Who Am I?</h3>
+            <p class="text-lg leading-relaxed text-gray-400">I am a creative professional with a passion for media,
+                photography, and digital design. With years of experience, I have worked on projects that showcase an
+                eye for detail and a deep appreciation for artistic storytelling.</p>
+        </section>
+
+        <!-- Skills & Expertise -->
+        <section class="bg-[#111] p-6 rounded-lg shadow-lg mb-10 transition-all hover:shadow-red-500/50">
+            <h3 class="text-3xl mb-4 text-red-500 font-semibold">Skills & Expertise</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center text-gray-400">
+                <div class="bg-[#222] p-4 rounded-md hover:bg-red-500 hover:text-white transition">Photography</div>
+                <div class="bg-[#222] p-4 rounded-md hover:bg-red-500 hover:text-white transition">Graphic Design</div>
+                <div class="bg-[#222] p-4 rounded-md hover:bg-red-500 hover:text-white transition">Editing</div>
+                <div class="bg-[#222] p-4 rounded-md hover:bg-red-500 hover:text-white transition">Creative Direction
+                </div>
+                <div class="bg-[#222] p-4 rounded-md hover:bg-red-500 hover:text-white transition">Branding & Marketing
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Achievements -->
+        <section class="bg-[#111] p-6 rounded-lg shadow-lg mb-10 transition-all hover:shadow-red-500/50">
+            <h3 class="text-3xl mb-4 text-red-500 font-semibold">Experience & Achievements</h3>
+            <ul class="list-none space-y-3">
+                <li class="flex items-center">
+                    <span class="w-3 h-3 bg-red-500 rounded-full mr-3"></span> Worked with top brands in the industry
+                </li>
+                <li class="flex items-center">
+                    <span class="w-3 h-3 bg-red-500 rounded-full mr-3"></span> Featured in digital and print
+                    publications
+                </li>
+                <li class="flex items-center">
+                    <span class="w-3 h-3 bg-red-500 rounded-full mr-3"></span> Recognized for outstanding photography
+                    and media projects
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-center py-6 mt-10">
+        <p class="text-gray-400">&copy; 2025 Jesiah Desaine. All Rights Reserved.</p>
+        <div class="mt-4 space-x-6">
+            <a href="https://www.instagram.com/jes.des.media/"
+                class="text-red-500 hover:text-white transition">Instagram</a>
+            <a href="https://www.linkedin.com/in/jesiah-desaine-4479511a5/"
+                class="text-red-500 hover:text-white transition">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        const floatingTab = document.getElementById("floating-tab");
+        const tabMenu = document.getElementById("tab-menu");
+        const menuIcon = document.getElementById("menu-icon");
+
+        floatingTab.addEventListener("click", () => {
+            const isOpen = !tabMenu.classList.contains("hidden");
+
+            tabMenu.classList.toggle("hidden");
+            floatingTab.classList.toggle("active");
+
+            if (isOpen) {
+                menuIcon.src = "img/icons/menu-open.webp"; // Reset to menu icon
+                menuIcon.style.animation = "rotateOut 0.3s ease-in-out"; // Rotate back
+            } else {
+                menuIcon.src = "img/icons/menu-close.webp"; // Set to close icon
+                menuIcon.style.animation = "rotateIn 0.3s ease-in-out"; // Rotate forward
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!floatingTab.contains(event.target) && !tabMenu.contains(event.target)) {
+                tabMenu.classList.add("hidden");
+                floatingTab.classList.remove("active");
+                menuIcon.src = "img/icons/menu-open.webp"; // Reset to menu icon
+                menuIcon.style.animation = "rotateOut 0.3s ease-in-out"; // Rotate back
+            }
+        });
+    </script>
+
+</body>
+
+</html>

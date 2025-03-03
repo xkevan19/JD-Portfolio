@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesiah Desaine - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-r from-[#000000] via-[#0a0a0a] to-[#000000]">
+
+    <!-- Floating Tab Menu -->
+    <div id="floating-tab"
+        class="fixed top-5 right-5 bg-white text-black rounded-full shadow-lg cursor-pointer px-4 py-2 flex items-center space-x-2 transition-all duration-300 z-50">
+        <img id="menu-icon" src="img/icons/menu-open.webp" alt="Menu"
+            class="w-6 h-6 transition-transform duration-300 origin-center">
+        <span class="text-lg mt-1">Menu</span>
+    </div>
+
+    <!-- Menu Content (Initially Hidden) -->
+    <div id="tab-menu"
+        class="fixed top-20 right-5 bg-white text-black w-60 p-5 rounded-lg shadow-lg hidden transition-all duration-300 z-50">
+        <div class="text-center">
+            <img src="img/jesiah-desaine.webp" alt="Jesiah Desaine"
+                class="w-20 h-20 rounded-full mx-auto border-2 border-white">
+            <h3 class="text-lg mt-2">Jesiah Desaine</h3>
+            <p class="text-sm text-gray-400">📞 <a href="https://wa.me/1234567890"
+                    class="text-green-400 hover:underline">WhatsApp</a></p>
+            <p class="text-sm text-gray-400">🕒 Available 4-10 PM</p>
+        </div>
+
+        <div class="mt-4 flex flex-col space-y-2">
+            <a href="bio.html" class="block text-center py-2 bg-transparent rounded-full">📖 Bio</a>
+            <a href="contact.html" class="block text-center py-2 bg-black text-white rounded-full hover:bg-black">📩
+                Contact</a>
+        </div>
+    </div>
+
+    <header class="text-center py-10">
+        <img src="img/jes-des-media-logo.webp" alt="Jes Des Media Logo" class="mx-auto" id="logo">
+        <h2 class="text-5xl text-gray-300 mt-10">The Jesiah Desaine Collection</h2>
+    </header>
+
+    <!-- Filters -->
+    <nav id="filter-nav"
+        class="container mx-auto flex justify-between px-4 py-4 fixed bottom-0 left-0 right-0 z-20 shadow-lg backdrop-blur-xl rounded-tl-lg rounded-tr-lg transition-all duration-300 ease-in-out transform"
+        style="transition: all 0.3s ease-in-out; background: rgba(255, 255, 255, 0.7);">
+        <!-- Toggle Button to Collapse/Expand -->
+        <button id="toggle-btn" class="text-black text-xl font-bold absolute top-0 left-1/2 transform -translate-x-1/2">
+            &#x25BC;
+        </button>
+
+        <!-- Filter by category section -->
+        <div class="filter-content flex flex-wrap justify-between w-full space-x-4 sm:space-x-2">
+            <div class="text-center w-full sm:w-auto">
+                <h3 class="text-xl text-black">Filter by category</h3>
+                <div class="flex justify-center space-x-4 mt-2">
+                    <button
+                        class="filter-btn active px-3 py-1 rounded-full bg-transparent text-black transition-all duration-300"
+                        data-category="all">All</button>
+                    <button
+                        class="filter-btn px-3 py-1 rounded-full bg-black text-white transition-colors duration-300 hover:bg-gray-600 active:bg-red-500"
+                        data-category="events">Events</button>
+                    <button
+                        class="filter-btn px-3 py-1 rounded-full bg-black text-white transition-colors duration-300 hover:bg-gray-600 active:bg-red-500"
+                        data-category="client">Client</button>
+                    <button
+                        class="filter-btn px-3 py-1 rounded-full bg-black text-white transition-colors duration-300 hover:bg-gray-600 active:bg-red-500"
+                        data-category="restaurant">Restaurant</button>
+                </div>
+            </div>
+
+            <!-- Change gallery mode section -->
+            <div class="text-center w-full sm:w-auto mt-4 sm:mt-0">
+                <h3 class="text-xl text-black">Change gallery mode</h3>
+                <div class="flex justify-center space-x-2 mt-2">
+                    <!-- 2 Columns - hidden on large screens and up -->
+                    <button
+                        class="column-btn px-3 py-1 rounded-full bg-black text-white transition-colors duration-300 hover:bg-gray-600 active:bg-red-500 lg:hidden"
+                        data-columns="2">2 Cols</button>
+
+                    <!-- 3 Columns - visible on all screens -->
+                    <button
+                        class="column-btn px-3 py-1 rounded-full bg-black text-white transition-colors duration-300 hover:bg-gray-600 active:bg-red-500"
+                        data-columns="3">3 Cols</button>
+
+                    <!-- 4 Columns - visible on all screens -->
+                    <button
+                        class="column-btn px-3 py-1 rounded-full bg-black text-white transition-colors duration-300 hover:bg-gray-600 active:bg-red-500"
+                        data-columns="4">4 Cols</button>
+
+                    <!-- 5 Columns - hidden on small screens (smaller than 640px) -->
+                    <button
+                        class="column-btn px-3 py-1 rounded-full bg-black text-white transition-colors duration-300 hover:bg-gray-600 active:bg-red-500 sm:hidden md:block"
+                        data-columns="5">5 Cols</button>
+
+                    <!-- 6 Columns - hidden on small screens (smaller than 640px) -->
+                    <button
+                        class="column-btn px-3 py-1 rounded-full bg-black text-white transition-colors duration-300 hover:bg-gray-600 active:bg-red-500 sm:hidden md:block"
+                        data-columns="6">6 Cols</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapsed State Label -->
+        <div id="collapsed-label" class="absolute top-7 left-1/2 transform -translate-x-1/2 text-black text-lg hidden">
+            <span>Filter Gallery</span>
+        </div>
+    </nav>
+
+    <!-- Gallery -->
+    <main class="container mx-auto px-4 py-8">
+        <div id="gallery-container" class="relative">
+            <div id="gallery" class="columns-4 md:columns-4 lg:columns-6 gap-6 space-y-6"></div>
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden">
+        <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded-lg shadow-lg">
+        <button id="lightbox-close" class="absolute top-5 right-5 text-black text-3xl">&times;</button>
+    </div>
+
+    <footer class="bg-transparent text-center py-6 mt-10">
+        <p class="text-gray-400">&copy; 2025 Jesiah Desaine. All Rights Reserved.</p>
+        <div class="mt-4 space-x-4">
+            <a href="https://www.instagram.com/jes.des.media/" class="text-red-500 hover:underline">Instagram</a>
+            <a href="https://www.linkedin.com/in/jesiah-desaine-4479511a5/" class="text-red-500 hover:underline">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="js/gallery.js?v=1.0"></script>
+    <script src="js/filter.js"></script>
+
+    <script>
+        // Handle active state for gallery mode buttons
+        const columnButtons = document.querySelectorAll('.column-btn');
+        columnButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all buttons
+                columnButtons.forEach(btn => btn.classList.remove('active', 'bg-red-500'));
+
+                // Add active class to the clicked button
+                this.classList.add('active', 'bg-red-500');
+            });
+        });
+
+        // Handle active state for filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-red-500'));
+
+                // Add active class to the clicked button
+                this.classList.add('active', 'bg-red-500');
+            });
+        });
+
+        // Toggle collapsible nav when clicking anywhere on the nav
+        const filterNav = document.getElementById('filter-nav');
+        const toggleBtn = document.getElementById('toggle-btn');
+        const collapsedLabel = document.getElementById('collapsed-label');
+        let isCollapsed = false;
+
+        const toggleNav = () => {
+            isCollapsed = !isCollapsed;
+            toggleBtn.innerHTML = isCollapsed ? '&#x25B2;' : '&#x25BC;';
+
+            // Show/hide collapsed label based on the collapsed state
+            if (isCollapsed) {
+                filterNav.classList.add('py-8'); // Increased padding for a larger clickable area
+                collapsedLabel.classList.remove('hidden'); // Show label
+
+                // Apply additional inline styles directly to filter-nav for effects
+                filterNav.style.filter = 'brightness(0.75) contrast(1.1)'; // brightness and contrast effects
+                filterNav.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)'; // Shadow effect
+                filterNav.querySelector('.filter-content').classList.add('hidden');
+            } else {
+                filterNav.classList.remove('py-8'); // Reset padding when expanded
+                collapsedLabel.classList.add('hidden'); // Hide label
+
+                // Reset inline styles
+                filterNav.style.filter = ''; // Reset filter
+                filterNav.style.boxShadow = ''; // Reset shadow
+                filterNav.querySelector('.filter-content').classList.remove('hidden');
+            }
+        };
+
+        // Click anywhere on the nav to toggle (excluding buttons inside)
+        filterNav.addEventListener('click', (event) => {
+            if (event.target.closest('button')) return; // Ignore clicks on buttons
+            toggleNav();
+        });
+
+        // Click the toggle button itself
+        toggleBtn.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent duplicate event from bubbling up
+            toggleNav();
+        });
+
+        const floatingTab = document.getElementById("floating-tab");
+        const tabMenu = document.getElementById("tab-menu");
+        const menuIcon = document.getElementById("menu-icon");
+
+        floatingTab.addEventListener("click", () => {
+            const isOpen = !tabMenu.classList.contains("hidden");
+
+            tabMenu.classList.toggle("hidden");
+            floatingTab.classList.toggle("active");
+
+            if (isOpen) {
+                menuIcon.src = "img/icons/menu-open.webp"; // Reset to menu icon
+                menuIcon.style.animation = "rotateOut 0.3s ease-in-out"; // Rotate back
+            } else {
+                menuIcon.src = "img/icons/menu-close.webp"; // Set to close icon
+                menuIcon.style.animation = "rotateIn 0.3s ease-in-out"; // Rotate forward
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!floatingTab.contains(event.target) && !tabMenu.contains(event.target)) {
+                tabMenu.classList.add("hidden");
+                floatingTab.classList.remove("active");
+                menuIcon.src = "img/icons/menu-open.webp"; // Reset to menu icon
+                menuIcon.style.animation = "rotateOut 0.3s ease-in-out"; // Rotate back
+            }
+        });
+
+        document.addEventListener("scroll", function () {
+            const filterNav = document.getElementById("filter-nav");
+            const footer = document.querySelector("footer");
+            const scrollPosition = window.innerHeight + window.scrollY;
+            const pageHeight = document.documentElement.scrollHeight;
+
+            if (scrollPosition >= pageHeight - 100) {
+                // Hide with a smooth effect
+                filterNav.classList.add("hidden");
+                filterNav.classList.remove("visible");
+            } else {
+                // Show with bounce-in effect
+                filterNav.classList.add("visible");
+                filterNav.classList.remove("hidden");
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #121212;
+    border-radius: 20px;
+    border: 1px solid #121212;
+}
+
+* {
+    scrollbar-width: 12px;
+    scrollbar-color: #aaa #121212;
+}
+
+@font-face {
+    font-family: 'Wakerobin';
+    src: url('../font/wakerobin-regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Wakerobin', sans-serif;
+}
+
+body {
+    font-size: 18px !important;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.photo {
+    transition: transform 0.1s ease-out, filter 0.3s ease-in-out;
+    opacity: 1;
+    will-change: transform;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
+}
+
+.photo:hover {
+    filter: drop-shadow(0 0 10px red) drop-shadow(0 0 20px cyan);
+    transform: scale(1.1);
+}
+
+.photo.hidden {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.photo[data-tilt] {
+    transform-style: preserve-3d;
+}
+
+.photo-wrapper {
+    position: relative;
+}
+
+.blur-effect {
+    filter: blur(10px);
+    transition: filter 0.3s ease-in-out;
+}
+
+.photo-wrapper:hover .photo {
+    filter: none !important;
+}
+
+#logo {
+    width: 150px;
+    filter: invert(1) hue-rotate(180deg)!important;
+}
+
+#filter-nav {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#filter-nav.hidden {
+    transform: translateY(100%) scale(0.95);
+    opacity: 0;
+    filter: blur(5px);
+}
+
+#filter-nav.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    animation: bounceIn 0.5s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateY(100%) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-10%) scale(1.05);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+#floating-tab.active {
+    background-color: #dc2626; /* Use your red color */
+    color: white;
+}
+
+#floating-tab.active img {
+    filter: invert(1); /* Invert icon color */
+}
+
+@keyframes rotateIn {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotateOut {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.menu-icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+/* Hide 5 and 6 column buttons on mobile */
+@media screen and (max-width: 640px) {
+
+    [data-columns="5"],
+    [data-columns="6"] {
+        display: none;
+    }
+
+    .filter-btn[data-category="all"] {
+        display: none;
+    }
+}
+
+footer {
+    position: relative;
+    background: rgba(0, 0, 0, 0.9); /* Semi-transparent */
+    z-index: 10; /* Ensure it stays above other elements */
+    padding-bottom: 60px; /* Extra space */
+}
