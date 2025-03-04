@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lightbox = document.createElement("div");
   lightbox.id = "lightbox";
   lightbox.className =
-    "fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden";
+    "fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden backdrop-blur-[7px] backdrop-grayscale-[0.5]";
   document.body.appendChild(lightbox);
 
   const lightboxImg = document.createElement("img");
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const lightboxClose = document.createElement("button");
   lightboxClose.id = "lightbox-close";
-  lightboxClose.className = "absolute top-5 right-5 text-white text-3xl";
+  lightboxClose.className = "absolute top-50 right-10 text-white text-8xl z-90";
   lightboxClose.innerHTML = "&times;";
   lightbox.appendChild(lightboxClose);
 
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "duration-100"
         );
         imgElement.setAttribute("data-category", image.category);
+        imgElement.setAttribute("loading", "lazy");
 
         // Tilt Effect - Optimized for Speed
         imgElement.addEventListener("mousemove", (e) => {

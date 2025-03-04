@@ -14,7 +14,8 @@
 
     <!-- Floating Tab Menu -->
     <div id="floating-tab"
-        class="fixed top-5 right-5 bg-white text-black rounded-full shadow-lg cursor-pointer px-4 py-2 flex items-center space-x-2 transition-all duration-300 z-50">
+        class="fixed top-5 right-5 bg-white text-black rounded-full shadow-lg cursor-pointer px-4 py-2 flex items-center space-x-2 transition-all duration-300 z-50"
+        aria-label="Open Menu">
         <img id="menu-icon" src="img/icons/menu-open.webp" alt="Menu"
             class="w-6 h-6 transition-transform duration-300 origin-center">
         <span class="text-lg mt-1">Menu</span>
@@ -22,7 +23,8 @@
 
     <!-- Menu Content (Initially Hidden) -->
     <div id="tab-menu"
-        class="fixed top-20 right-5 bg-white text-black w-60 p-5 rounded-lg shadow-lg hidden transition-all duration-300 z-50">
+        class="fixed top-20 right-5 bg-white text-black w-60 p-5 rounded-lg shadow-lg hidden transition-all duration-300 z-50"
+        aria-expanded="false" aria-controls="floating-tab" aria-hidden="true">
         <div class="text-center">
             <img src="img/jesiah-desaine.webp" alt="Jesiah Desaine"
                 class="w-20 h-20 rounded-full mx-auto border-2 border-white">
@@ -49,7 +51,8 @@
         class="container mx-auto flex justify-between px-4 py-4 fixed bottom-0 left-0 right-0 z-20 shadow-lg backdrop-blur-xl rounded-tl-lg rounded-tr-lg transition-all duration-300 ease-in-out transform"
         style="transition: all 0.3s ease-in-out; background: rgba(255, 255, 255, 0.7);">
         <!-- Toggle Button to Collapse/Expand -->
-        <button id="toggle-btn" class="text-black text-xl font-bold absolute top-0 left-1/2 transform -translate-x-1/2">
+        <button id="toggle-btn" class="text-black text-xl font-bold absolute top-0 left-1/2 transform -translate-x-1/2"
+            aria-label="Toggle Filter Navigation">
             &#x25BC;
         </button>
 
@@ -119,16 +122,23 @@
     </main>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden">
-        <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded-lg shadow-lg">
-        <button id="lightbox-close" class="absolute top-5 right-5 text-black text-3xl">&times;</button>
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden"
+        role="dialog" aria-labelledby="lightbox-title">
+        <div class="relative">
+            <img id="lightbox-img"
+                class="max-w-full max-h-[90vh] rounded-lg shadow-lg transform scale-0 transition-transform duration-300">
+            <button id="lightbox-close" class="absolute top-5 right-5 text-white text-3xl hover:text-red-500"
+                aria-label="Close Lightbox">&times;</button>
+        </div>
     </div>
+    <h2 id="lightbox-title" class="sr-only">Image Preview</h2>
 
     <footer class="bg-transparent text-center py-6 mt-10">
         <p class="text-gray-400">&copy; 2025 Jesiah Desaine. All Rights Reserved.</p>
         <div class="mt-4 space-x-4">
             <a href="https://www.instagram.com/jes.des.media/" class="text-red-500 hover:underline">Instagram</a>
-            <a href="https://www.linkedin.com/in/jesiah-desaine-4479511a5/" class="text-red-500 hover:underline">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/jesiah-desaine-4479511a5/"
+                class="text-red-500 hover:underline">LinkedIn</a>
         </div>
     </footer>
 
@@ -172,12 +182,12 @@
 
             // Show/hide collapsed label based on the collapsed state
             if (isCollapsed) {
-                filterNav.classList.add('py-8'); // Increased padding for a larger clickable area
+                filterNav.classList.add('py-8');
                 collapsedLabel.classList.remove('hidden'); // Show label
 
                 // Apply additional inline styles directly to filter-nav for effects
-                filterNav.style.filter = 'brightness(0.75) contrast(1.1)'; // brightness and contrast effects
-                filterNav.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)'; // Shadow effect
+                filterNav.style.filter = 'brightness(0.75) contrast(1.1)';
+                filterNav.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
                 filterNav.querySelector('.filter-content').classList.add('hidden');
             } else {
                 filterNav.classList.remove('py-8'); // Reset padding when expanded
@@ -215,9 +225,11 @@
             if (isOpen) {
                 menuIcon.src = "img/icons/menu-open.webp"; // Reset to menu icon
                 menuIcon.style.animation = "rotateOut 0.3s ease-in-out"; // Rotate back
+                tabMenu.setAttribute("aria-expanded", "false");
             } else {
                 menuIcon.src = "img/icons/menu-close.webp"; // Set to close icon
                 menuIcon.style.animation = "rotateIn 0.3s ease-in-out"; // Rotate forward
+                tabMenu.setAttribute("aria-expanded", "true");
             }
         });
 
@@ -228,6 +240,7 @@
                 floatingTab.classList.remove("active");
                 menuIcon.src = "img/icons/menu-open.webp"; // Reset to menu icon
                 menuIcon.style.animation = "rotateOut 0.3s ease-in-out"; // Rotate back
+                tabMenu.setAttribute("aria-expanded", "false");
             }
         });
 
@@ -247,8 +260,6 @@
                 filterNav.classList.remove("hidden");
             }
         });
-
-
     </script>
 </body>
 

@@ -1,22 +1,40 @@
+/* Define CSS Variables */
+:root {
+    --primary-bg: #121212;
+    --primary-text: #ffffff;
+    --accent-red: #dc2626;
+    --accent-cyan: cyan;
+    --primary-shadow: rgba(0, 0, 0, 0.2);
+    --hover-shadow: rgba(0, 0, 0, 0.4);
+    --font-family-primary: 'Josefin Sans', sans-serif;
+    --font-family-secondary: 'Wakerobin', sans-serif;
+    --font-size-base: 18px;
+    --logo-width: 150px;
+    --transition-duration: 0.3s;
+    --filter-duration: 0.3s;
+    --filter-hover: drop-shadow(0 0 10px red) drop-shadow(0 0 20px cyan);
+}
+
+/* Scrollbar Styles */
 *::-webkit-scrollbar {
     width: 12px;
 }
 
 *::-webkit-scrollbar-track {
-    background: #121212;
+    background: var(--primary-bg);
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #121212;
+    background-color: var(--primary-bg);
     border-radius: 20px;
-    border: 1px solid #121212;
+    border: 1px solid var(--primary-bg);
 }
 
 * {
-    scrollbar-width: 12px;
-    scrollbar-color: #aaa #121212;
+    scrollbar-color: #aaa var(--primary-bg);
 }
 
+/* Font Loading */
 @font-face {
     font-family: 'Wakerobin';
     src: url('../font/wakerobin-regular.otf') format('opentype');
@@ -24,28 +42,30 @@
     font-style: normal;
 }
 
+/* Heading Styles */
 h1,
 h2,
 h3,
 h4 {
-    font-family: 'Wakerobin', sans-serif;
+    font-family: var(--font-family-secondary), sans-serif;
 }
 
+/* Body Font */
 body {
-    font-size: 18px !important;
-    font-family: 'Josefin Sans', sans-serif;
+    font-size: var(--font-size-base) !important;
+    font-family: var(--font-family-primary), sans-serif;
 }
 
-
+/* Photo Hover Effects */
 .photo {
-    transition: transform 0.1s ease-out, filter 0.3s ease-in-out;
+    transition: transform 0.1s ease-out, filter var(--filter-duration) ease-in-out;
     opacity: 1;
     will-change: transform;
     transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
 }
 
 .photo:hover {
-    filter: drop-shadow(0 0 10px red) drop-shadow(0 0 20px cyan);
+    filter: var(--filter-hover);
     transform: scale(1.1);
 }
 
@@ -58,27 +78,26 @@ body {
     transform-style: preserve-3d;
 }
 
-.photo-wrapper {
-    position: relative;
-}
-
+/* Blur Effect */
 .blur-effect {
-    filter: blur(10px);
-    transition: filter 0.3s ease-in-out;
+    filter: blur(10px) grayscale(0.7);
+    transition: filter var(--filter-duration) ease-in-out;
 }
 
 .photo-wrapper:hover .photo {
     filter: none !important;
 }
 
+/* Logo Styles */
 #logo {
-    width: 150px;
-    filter: invert(1) hue-rotate(180deg)!important;
+    width: var(--logo-width);
+    filter: invert(1) hue-rotate(180deg) !important;
 }
 
+/* Filter Nav Transitions */
 #filter-nav {
     cursor: pointer;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition: transform var(--transition-duration) ease-in-out, opacity var(--transition-duration) ease-in-out;
 }
 
 #filter-nav.hidden {
@@ -93,34 +112,46 @@ body {
     animation: bounceIn 0.5s ease-out;
 }
 
+.hidden {
+    display: none !important;
+}
+
+/* Bounce Animation */
 @keyframes bounceIn {
     0% {
         transform: translateY(100%) scale(0.8);
         opacity: 0;
     }
+
     50% {
         transform: translateY(-10%) scale(1.05);
         opacity: 0.7;
     }
+
     100% {
         transform: translateY(0) scale(1);
         opacity: 1;
     }
 }
 
+/* Floating Tab Active State */
 #floating-tab.active {
-    background-color: #dc2626; /* Use your red color */
-    color: white;
+    background-color: var(--accent-red);
+    /* Use your red color */
+    color: var(--primary-text);
 }
 
 #floating-tab.active img {
-    filter: invert(1); /* Invert icon color */
+    filter: invert(1);
+    /* Invert icon color */
 }
 
+/* Rotation Animations */
 @keyframes rotateIn {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(180deg);
     }
@@ -130,16 +161,15 @@ body {
     from {
         transform: rotate(180deg);
     }
+
     to {
         transform: rotate(0deg);
     }
 }
 
 .menu-icon {
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--transition-duration) ease-in-out;
 }
-
-
 
 /* Hide 5 and 6 column buttons on mobile */
 @media screen and (max-width: 640px) {
@@ -154,9 +184,10 @@ body {
     }
 }
 
+/* Footer Styling */
 footer {
     position: relative;
-    background: rgba(0, 0, 0, 0.9); /* Semi-transparent */
-    z-index: 10; /* Ensure it stays above other elements */
-    padding-bottom: 60px; /* Extra space */
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10;
+    padding-bottom: 60px;
 }
